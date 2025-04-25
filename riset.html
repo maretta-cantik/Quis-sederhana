@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Maiden+Orange&family=Nosifer&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Righteous&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>Reset Password</title>
+  <style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background-image: url('background-home.png'); 
+        background-size: cover;
+        background-attachment: fixed; 
+        background-position: center;
+        min-height: 900px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .reset-container {
+      background: #D1F8EF;
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    .reset-container h2 {
+      margin-top: 10px;
+      margin-bottom: 20px; 
+      font-size: 30px;
+      color: black;
+      font-family: "Irish Grover", system-ui;
+    
+    }
+
+    .reset-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+      border: 1px solid white;
+      border-radius: 60px;
+      height: 40px;
+    }
+
+    .reset-container input::placeholder {
+        font-family: "Nunito", serif;
+        font-weight: bold;
+    }
+
+    .reset-container button {
+      width: 100%;
+      height: 40px;
+      padding: 10px;
+      background-color: #ffcc00;
+      color: black;
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      font-size: 15px;
+      margin-top: 10px;
+      font-family: "Nunito", serif;
+      font-weight: bold;
+    }
+
+    .reset-container button:hover {
+      background-color: #1e88e5;
+    }
+
+    .reset-container p.subtext {
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: black;
+      font-family: "Nunito", serif;
+      font-weight: bold;
+    }
+
+    .reset-container .quote {
+      margin-top: 25px;
+      font-size: 14px;
+      color: black;
+      font-family: "Nunito", serif;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="reset-container">
+    <h2>Reset Password</h2>
+    <p class="subtext">Keep your account secure by creating a new password.</p>
+    <input type="password" id="newPassword" placeholder="New Password">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+    <button onclick="resetPassword()">Submit</button>
+    <p class="quote">You're doing great. Keep going! 💪</p>
+  </div>
+
+  <script>
+    function resetPassword() {
+      const newPass = document.getElementById("newPassword").value;
+      const confirmPass = document.getElementById("confirmPassword").value;
+
+      if (newPass !== confirmPass) {
+        alert("Password tidak cocok!");
+        return;
+      }
+
+      // Simpan password baru ke localStorage (sesuai struktur kamu sebelumnya)
+      localStorage.setItem("userPassword", newPass);
+      alert("Password berhasil direset!");
+      window.location.href = "login.html"; // arahkan ke halaman login
+    }
+  </script>
+</body>
+</html>

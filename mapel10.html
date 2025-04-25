@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Maiden+Orange&family=Nosifer&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Righteous&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('background-home.png'); 
+            background-size: cover;
+            background-attachment: fixed; 
+            background-position: center;
+            min-height: 900px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            height: 55px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 10000;
+            place-items: center;
+            box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.7); /* buat garis tipis tp tetap kelihatan */
+        }
+  
+        .account .icon {
+            width: 25px; 
+            height: 30px;
+            object-fit: contain; 
+        }
+
+        .account {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 55px; 
+        }
+
+        .account a {
+            font-family: "Nunito", serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: rgba(143, 143, 143, 1);
+            text-decoration: none;
+        }
+
+        .account :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+        
+        .account-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #D1F8EF;
+            border-radius: 12px;
+            padding: 15px;
+            min-width: 200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 999;
+            font-family: "Nunito", serif;
+        }
+
+        .account-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content .info-item {
+            margin: 5px 0;
+            font-size: 14px;
+            font-style: normal;
+        }
+
+        .dropdown-content button {
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 50px;
+            padding: 6px 12px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .menu {
+            margin: 0;
+            display: flex;
+            gap: 5px;
+            list-style: none;
+            padding: 0;	
+            margin-left: auto;	
+            align-items: center;
+            
+        }
+
+        .menu li {
+            padding-left: 0;
+            margin-right: 20px;
+        }
+
+        .menu li a {
+            padding:5px;
+            text-decoration: none;
+            display: inline-block;
+            font-family: "Nunito", serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: rgba(143, 143, 143, 1);;
+        }
+
+        .menu-home :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .menu-about :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .menu-faqs :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-top: 150px;
+            margin-bottom: 30px;
+
+        }
+
+        .user-greeting {
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(40, 40, 40, 1);
+            font-family: "Nosifer", cursive;
+        }
+
+        .welcome-section p {
+            font-size: 18px;
+            font-style: italic;
+            font-family: "Nunito", serif;
+            color: rgba(40, 40, 40, 1);
+        }
+
+        .welcome-section {
+            text-align: left; 
+            margin-left: -470px; 
+            position: sticky;
+        }
+
+        .user-greeting,
+        .welcome-section p {
+            margin: 0; 
+        }
+
+
+        .container {
+            width: 700px; 
+            height: 63vh;
+            min-width: 500px;
+            margin-left: -30px;
+            transform: scale(1.2); 
+            padding: 30px; 
+            background-color: #dff; 
+            border-radius: 20px;
+            margin: 3rem;
+        }
+
+        h2 {
+            font-size: 30px;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-family: "Irish Grover", system-ui;
+            color: rgba(40, 40, 40, 1);
+            letter-spacing: 2px;
+        }
+
+        .radio-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 80%;
+            justify-content: center;
+            margin: 40px auto 0 auto;
+
+        }
+
+        .radio-box {
+            display: inline-flex;
+            align-items: center;
+            width: 130px;
+            height: 50PX;
+            padding: 15px 20px;
+            border: none;
+            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+            position: relative;      
+        }
+
+        .radio-box input[type="radio"] {
+            display: none;
+        }
+
+        .radio-text {
+            font-weight: bold;
+            color:  rgba(40, 40, 40, 1);
+            margin-left: 23px;
+            font-family: "Nunito", serif;
+        }
+
+        .radio-circle {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #fff;
+            transition: background 0.3s;
+            left: 8px;
+        }
+
+        .radio-box:nth-child(1) {
+            background-color: #ffeb99;
+        }
+
+        .radio-box:nth-child(2) {
+            background-color: #FFEDFA;
+        }
+
+        .radio-box:nth-child(3) {
+            background-color: #F9C0AB;
+        }
+
+        .radio-box:nth-child(4) {
+            background-color: #ffeb99;
+        }
+
+        .radio-box:nth-child(5) {
+            background-color: #FFEDFA;
+        }
+
+        .radio-box:nth-child(6) {
+            background-color: #F9C0AB;
+        }
+
+        .radio-box input[type="radio"]:checked {
+            background-color: #4CAF50;
+        }
+        .radio-box input[type="radio"]:checked ~ .radio-circle {
+            background-color: #4CAF50;
+
+        }
+
+        p {
+            font-family: "Nunito", serif;
+            font-style: italic;
+            margin-left: 70px;
+        }
+
+        .change-class {
+            text-decoration: none;
+            font-family: "Nunito", serif;
+            font-style: italic;
+        }
+        .button {
+            display: block; 
+            margin: 85px auto 0; 
+            align-items: center;  
+            justify-content: center;
+            padding: 15px 0; 
+            height: 25px;
+            width: 50%; 
+            background-color: #ffcc00;
+            color: #332700 ;
+            border: none;
+            outline: none;
+            border-radius: 60px; 
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            font-family: "Nunito", serif;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 35px;
+        }
+
+        @media (max-width: 768px) {
+            .radio-container {
+                grid-template-columns: repeat(2, 1fr); 
+            }
+
+            .container {
+                transform: scale(1);
+                width: 90%;
+            }
+
+            .welcome-section {
+                margin-left: 0;
+                text-align: center;
+            }
+        }
+
+    </style>
+    <nav class="navbar">
+        <ul class="menu">
+           <li class="menu-home"><a href="index.html">Home</a></li>
+           <li class="menu-about"><a href="about.html">About Us</a></li>
+           <li class="menu-faqs"><a href="faqs.html">Faqs</a></li>
+       </ul>
+       <div class="account-dropdown">
+        <div class="account">
+          <img src="logo-account.png" alt="User Icon" class="icon">
+          <a href="#">My Account</a>
+        </div>
+        <div class="dropdown-content">
+            <p class="info-item"><strong>Name:</strong> <span id="navName"></span></p>
+            <p class="info-item"><strong>Email:</strong> <span id="navEmail"></span></p>
+            <p class="info-item"><strong>School:</strong> <span id="navSchool"></span></p>
+            <button onclick="logout()">Logout</button>
+        </div>
+      </div>
+       </nav>
+    <div class="welcome-section">
+        <h1 class="user-greeting">HELLO👋</h1>
+        <p>The Journey Continues! just a few more steps</p>
+    </div>
+    <div class="container">
+        <h2>Choose a Subject to Start Practicing</h2>
+        <p>Not in Class 11? <a href="dashbord.html" class="change-class">Click here to change class</a></p>
+        </p>
+        <div class="radio-container">
+            <label class="radio-box">
+                <input type="radio" name="mapel" value="Math">
+                <div class="radio-circle"></div>
+                <span class="radio-text">Math</span>
+            </label>
+        
+            <label class="radio-box">
+                <input type="radio" name="mapel" value="English">
+                <div class="radio-circle"></div>
+                <span class="radio-text">English</span>
+            </label>
+
+            <label class="radio-box">
+                <input type="radio" name="mapel" value="History">
+                <div class="radio-circle"></div>
+                <span class="radio-text">History</span>
+            </label>
+        
+            <label class="radio-box">
+                <input type="radio" name="mapel" value="Physics">
+                <div class="radio-circle"></div>
+                <span class="radio-text">Physics</span>
+            </label>
+        
+            <label class="radio-box">
+                <input type="radio" name="mapel" value="Biology">
+                <div class="radio-circle"></div>
+                <span class="radio-text">Biology</span>
+            </label>
+
+            <label class="radio-box">
+                <input type="radio" name="mapel" value="Chemistry">
+                <div class="radio-circle"></div>
+                <span class="radio-text">Chemistry</span>
+            </label>
+        </div>
+        <a href="playing.html" class="button" id="takeQuizBtn">Take Quiz</a>
+    </div>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            const email = localStorage.getItem("userEmail");
+            if (email) {
+                const name = email.split('@')[0];
+                const displayName = name.charAt(0).toUpperCase() + name.slice(1);
+                const welcomeTitle = document.querySelector('.user-greeting');
+                welcomeTitle.textContent = `Hello ${displayName}! 👋`;
+            }
+        });
+        
+        const radioButtons = document.querySelectorAll('input[name="mapel"]');
+        const takeQuizBtn = document.getElementById('takeQuizBtn');
+
+        // Tombol awalnya tidak aktif
+        takeQuizBtn.style.pointerEvents = 'none';
+        takeQuizBtn.style.opacity = '0.5';
+
+        // Logika aktivasi tombol & pengalihan halaman
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', function() {
+                takeQuizBtn.style.pointerEvents = 'auto';
+                takeQuizBtn.style.opacity = '1';
+
+                // Ambil value pelajaran yang dipilih
+                const selectedValue = document.querySelector('input[name="mapel"]:checked').value;
+            }
+        )});
+        
+        takeQuizBtn.addEventListener("click", function () {
+            const selectedMapel = document.querySelector('input[name="mapel"]:checked')?.value;
+
+            if (selectedMapel) {
+                localStorage.setItem("mapelDipilih", selectedMapel.toLowerCase());
+                window.location.href = "playing.html";        
+            }
+        });
+    </script>
+    <script>
+       document.addEventListener("DOMContentLoaded", function () {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const accountBtn = document.getElementById('accountBtn');
+      const dropdown = document.getElementById('dropdownContent');
+  
+      if (user) {
+        // Isi data ke dropdown
+        document.getElementById('navName').textContent = user.name;
+        document.getElementById('navEmail').textContent = user.email;
+        document.getElementById('navSchool').textContent = user.school || 'Not Provided';
+      }
+  
+      window.logout = function () {
+        localStorage.removeItem('user');
+        window.location.href = 'login.html';
+      };
+    });
+    
+      accountBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (!user) {
+          alert('Silakan sign up terlebih dahulu untuk mengakses My Account.');
+        } else {
+          // Toggle dropdown
+          dropdown.classList.toggle('show'); 
+        }
+      });
+      </script>
+</body>
+</html>

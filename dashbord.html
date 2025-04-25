@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Maiden+Orange&family=Nosifer&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Righteous&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('background-home.png'); /* Ganti dengan gambar latar belakang kamu */
+            background-size: cover;
+            background-attachment: fixed; /* Ini yang bikin latar tetap diam */
+            background-position: center;
+            min-height: 900px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            height: 55px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 10000;
+            place-items: center;
+            box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.7); /* buat garis tipis tp tetap kelihatan */
+        }
+  
+        .account .icon {
+            width: 25px; 
+            height: 30px;
+            object-fit: contain; /* pastiin ikon nya ga terdistorsi */
+        }
+
+        .account {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 55px; 
+        }
+
+        .account a {
+            font-family: "Nunito", serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: rgba(143, 143, 143, 1);
+            text-decoration: none;
+        }
+
+        .account :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+        
+        .account-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #D1F8EF;
+            border-radius: 12px;
+            padding: 15px;
+            min-width: 200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 999;
+            font-family: "Nunito", serif;
+        }
+
+        .account-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .dropdown-content button {
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 50px;
+            padding: 6px 12px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .menu {
+            margin: 0;
+            display: flex;
+            gap: 5px;
+            list-style: none;
+            padding: 0;	
+            margin-left: auto;	
+            align-items: center;
+            
+        }
+
+        .menu li {
+            padding-left: 0;
+            margin-right: 20px;
+        }
+
+        .menu li a {
+            padding:5px;
+            text-decoration: none;
+            display: inline-block;
+            font-family: "Nunito", serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: rgba(143, 143, 143, 1);;
+        }
+
+        .menu-home :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .menu-about :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .menu-faqs :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 17px;
+
+        }
+
+        .welcome-section h1 {
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(40, 40, 40, 1);
+            font-family: "Nosifer", cursive;
+        }
+
+        .welcome-section p {
+            font-size: 18px;
+            font-style: italic;
+            font-family: "Nunito", serif;
+            color: rgba(40, 40, 40, 1);
+        }
+
+        .welcome-section {
+            text-align: left; 
+            margin-left: -310px; 
+            position: sticky;
+        }
+
+        .welcome-section h1,
+        .welcome-section p {
+            margin: 0; 
+        }
+
+
+        .container {
+            width: 700px; 
+            height: 45svh;
+            min-width: 500px;
+            margin-left: -30px;
+            transform: scale(1.2); 
+            padding: 30px; 
+            background-color: #dff; 
+            border-radius: 27px;
+            margin: 3rem;
+        }
+
+        h2 {
+            font-size: 30px;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            font-family: "Irish Grover", system-ui;
+            color: rgba(40, 40, 40, 1);
+            letter-spacing: 2px;
+        }
+
+        .radio-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .radio-box {
+            display: inline-flex;
+            align-items: center;
+            width: 130px;
+            height: 50PX;
+            padding: 15px 20px;
+            border: none;
+            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+            position: relative;
+        }
+
+        .radio-box input[type="radio"] {
+            display: none;
+        }
+
+        .radio-text {
+            font-weight: bold;
+            color:  rgba(40, 40, 40, 1);
+            margin-left: 23px;
+            font-family: "Nunito", serif;
+        }
+
+        .radio-circle {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #fff;
+            transition: background 0.3s;
+            left: 8px;
+        }
+
+        .radio-box:nth-child(1) {
+            background-color: #ffeb99;
+        }
+
+        .radio-box:nth-child(2) {
+            background-color: #FFEDFA;
+        }
+
+        .radio-box:nth-child(3) {
+            background-color: #F9C0AB;
+        }
+
+        .radio-box input[type="radio"]:checked {
+            background-color: #4CAF50;
+        }
+        .radio-box input[type="radio"]:checked ~ .radio-circle {
+            background-color: #4CAF50;
+
+        }
+
+        .button {
+            display: flex; 
+            margin: 85px auto 0; 
+            align-items: center;  
+            justify-content: center;
+            padding: 15px 0; 
+            height: 20px;
+            width: 48%; 
+            background-color: #ffcc00;
+            color: #332700 ;
+            border: none;
+            outline: none;
+            border-radius: 60px; 
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            font-family: "Nunito", serif;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 45px;
+        }
+    </style>
+    <nav class="navbar">
+        <ul class="menu">
+           <li class="menu-home"><a href="index.html">Home</a></li>
+           <li class="menu-about"><a href="about.html">About Us</a></li>
+           <li class="menu-faqs"><a href="faqs.html">Faqs</a></li>
+       </ul>
+       <div class="account-dropdown">
+        <div class="account">
+          <img src="logo-account.png" alt="User Icon" class="icon">
+          <a href="#">My Account</a>
+        </div>
+        <div class="dropdown-content">
+            <p><strong>Name:</strong> <span id="navName"></span></p>
+            <p><strong>Email:</strong> <span id="navEmail"></span></p>
+            <p><strong>School:</strong> <span id="navSchool"></span></p>
+            <button onclick="logout()">Logout</button>
+        </div>
+      </div>
+       </nav>
+    <div class="welcome-section">
+        <h1>WELCOME👋</h1>
+        <p>Every great journey begins with a single step! We’re glad to have you here!</p>
+    </div>
+    <div class="container">
+        <h2>Select your Class to begin!</h2>
+        <div class="radio-container">
+            
+            <label class="radio-box">
+                <input type="radio" name="Kelas" value="10">
+                <div class="radio-circle"></div>
+                <span class="radio-text">Kelas 10</span>
+            </label>
+        
+            <label class="radio-box">
+                <input type="radio" name="Kelas" value="11">
+                <div class="radio-circle"></div>
+                <span class="radio-text">Kelas 11</span>
+            </label>
+        
+            <label class="radio-box">
+                <input type="radio" name="Kelas" value="12">
+                <div class="radio-circle"></div>
+                <span class="radio-text">Kelas 12</span>
+            </label>
+        </div>
+        <a href="#" class="button" id="subjectBtn">Continue to subjects</a>
+    </div>
+    
+<script>
+        window.addEventListener("DOMContentLoaded", function () {
+        const email = localStorage.getItem("userEmail");
+        if (email) {
+            const name = email.split('@')[0]; // ambil bagian sebelum @
+            const displayName = name.charAt(0).toUpperCase() + name.slice(1); // Kapital huruf depan
+            const welcomeTitle = document.querySelector('.welcome-section h1');
+            welcomeTitle.textContent = `WELCOME ${displayName.toUpperCase()}! 👋`;
+        }
+    });
+
+        const radioButtons = document.querySelectorAll('input[name="Kelas"]');
+        const subjectBtn = document.getElementById('subjectBtn');
+    
+        // Nonaktifkan tombol saat belum ada pilihan
+        subjectBtn.style.pointerEvents = 'none';
+        subjectBtn.style.opacity = '0.5';
+        subjectBtn.setAttribute('disabled', true);
+    
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', function() {
+                subjectBtn.style.pointerEvents = 'auto';
+                subjectBtn.style.opacity = '1';
+                subjectBtn.removeAttribute('disabled');
+            
+                // Ambil nilai kelas yang dipilih
+                const selectedValue = document.querySelector('input[name="Kelas"]:checked').value;
+                subjectBtn.setAttribute('data-link', `mapel${selectedValue}.html`);
+            });
+        });
+    
+        subjectBtn.addEventListener('click', function(event) {
+        const link = subjectBtn.getAttribute('data-link');
+        const selectedValue = document.querySelector('input[name="Kelas"]:checked').value;
+        
+        if (selectedValue) {
+            localStorage.setItem("kelasDipilih", selectedValue.toLowerCase());
+        }
+
+        if (!link) {
+            event.preventDefault();
+        } else {
+            window.location.href = link;
+        }
+    });
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const accountBtn = document.getElementById('accountBtn');
+    const dropdown = document.getElementById('dropdownContent');
+
+    if (user) {
+      // Isi data ke dropdown
+      document.getElementById('navName').textContent = user.name;
+      document.getElementById('navEmail').textContent = user.email;
+      document.getElementById('navSchool').textContent = user.school || 'Not Provided';
+    }
+
+    window.logout = function () {
+      localStorage.removeItem('user');
+      window.location.href = 'login.html';
+    };
+  });
+  
+    accountBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (!user) {
+        alert('Silakan sign up terlebih dahulu untuk mengakses My Account.');
+      } else {
+        // Toggle dropdown
+        dropdown.classList.toggle('show'); 
+      }
+    });   
+</script>
+  
+</body>
+</html>
+
+ 

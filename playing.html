@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Maiden+Orange&family=Nosifer&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Righteous&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('background-home.png'); 
+            background-size: cover;
+            background-attachment: fixed; 
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            min-height: 700PX;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            height: 55px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 10000;
+            place-items: center;
+            box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.7); /* buat garis tipis tp tetap kelihatan */
+        }
+  
+        .account .akun {
+            width: 25px; 
+            height: 30px;
+            object-fit: contain; 
+        }
+
+        .account {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 55px; 
+        }
+
+        .account a {
+            font-family: "Nunito", serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: rgba(143, 143, 143, 1);
+            text-decoration: none;
+        }
+
+        .account :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+        
+        .account-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #D1F8EF;
+            border-radius: 12px;
+            padding: 15px;
+            min-width: 200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 999;
+            font-family: "Nunito", serif;
+        }
+
+        .account-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: black;
+        }
+
+        .dropdown-content .info-item {
+            margin: 5px 0;
+            font-size: 14px;
+            color: black;
+            font-weight: 400;
+        }
+
+        .dropdown-content button {
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 50px;
+            padding: 6px 12px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .menu {
+            margin: 0;
+            display: flex;
+            gap: 5px;
+            list-style: none;
+            padding: 0;	
+            margin-left: auto;	
+            align-items: center;
+            
+        }
+
+        .menu li {
+            padding-left: 0;
+            margin-right: 20px;
+        }
+
+        .menu li a {
+            padding:5px;
+            text-decoration: none;
+            display: inline-block;
+            font-family: "Nunito", serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: rgba(143, 143, 143, 1);;
+        }
+
+        .menu-home :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .menu-about :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .menu-faqs :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+       
+        .container {
+            flex-direction: column;
+            background-color: rgba(207, 255, 247, 1);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            width: 700px;
+            height: 37vh;
+            max-width: 2000px;
+            margin: 0;
+            transform: scale(1.2); 
+            margin-top: 40PX;
+            font-weight: lighter;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: "Irish Grover", system-ui;
+            color: rgba(0, 0, 0, 1);
+            font-weight: 400;
+            margin-top: 40px;
+            font-size: 35px;
+        }
+
+        p {
+            font-family: "Nunito", serif;
+            font-weight: bold;
+            font-size: 16px;
+            color: #0000EE;
+            margin-top: 10px;
+        }
+
+        .button {
+            display: inline-flex; 
+            gap: 15px;
+            margin: 85px auto 0; 
+            align-items: center;  
+            justify-content: center;
+            padding: 15px 0; 
+            height: 50px;
+            width: 47%; 
+            background-color: #ffcc00;
+            color:  rgba(255, 255, 255, 1) ;
+            border: none;
+            outline: none;
+            border-radius: 60px; 
+            cursor: pointer;
+            font-size: 35px;
+            text-align: center;
+            font-family: "Irish Grover", system-ui;
+            text-decoration: none;
+            margin-top: 20px;
+            line-height: 25px;
+        }
+     
+        .icon {
+            width: 25px;
+            height: 30px;
+            filter: invert(1);       
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                transform: scale(1);
+                width: 90%;
+            }
+
+            .welcome-section {
+                margin-left: 0;
+                text-align: center;
+            }
+        }
+
+    </style>
+    <nav class="navbar">
+        <ul class="menu">
+           <li class="menu-home"><a href="index.html">Home</a></li>
+           <li class="menu-about"><a href="about.html">About Us</a></li>
+           <li class="menu-faqs"><a href="faqs.html">Faqs</a></li>
+       </ul>
+       <div class="account-dropdown">
+        <div class="account">
+          <img src="logo-account.png" alt="User Icon" class="akun">
+          <a href="#">My Account</a>
+        </div>
+        <div class="dropdown-content">
+            <p class="info-item"><strong>Name:</strong> <span id="navName"></span></p>
+            <p class="info-item"><strong>Email:</strong> <span id="navEmail"></span></p>
+            <p class="info-item"><strong>School:</strong> <span id="navSchool"></span></p>
+            <button onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+        <h1>Okay here goes!</h1>
+        <p>Have fun playing the quiz</p>
+        <button class="button" id="startBtn">
+            Start <img src="start-icon.png" class="icon"> 
+         </button>               
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const kelas = localStorage.getItem("kelasDipilih");
+    const mapel = localStorage.getItem("mapelDipilih");
+
+    console.log("kelas:", kelas);
+    console.log("mapel:", mapel);
+
+    const startBtn = document.getElementById("startBtn");
+
+    if (startBtn) {
+        startBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (kelas && mapel) {
+                const url = `${mapel}${kelas}.html`;
+                window.location.href = url;
+            }
+        });
+    }
+});
+
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const accountBtn = document.getElementById('accountBtn');
+      const dropdown = document.getElementById('dropdownContent');
+  
+      if (user) {
+        // Isi data ke dropdown
+        document.getElementById('navName').textContent = user.name;
+        document.getElementById('navEmail').textContent = user.email;
+        document.getElementById('navSchool').textContent = user.school || 'Not Provided';
+      }
+  
+      window.logout = function () {
+        localStorage.removeItem('user');
+        window.location.href = 'login.html';
+      };
+    });
+    
+</script>
+</body>
+</html>

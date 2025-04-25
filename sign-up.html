@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Maiden+Orange&family=Nosifer&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Righteous&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Sign Up</title>
+    <style>
+        body {
+            background-image: url('background sign-up.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            min-height: 800px;
+        }
+
+        .container {
+            width: 572%;
+            height: 800px;
+            max-width: 1200px;
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        .signup-form {
+            width: 450px;
+            height: 770px;
+            padding: 20px;
+            background: #D1F8EF;
+            box-shadow:1px rgba(0, 0, 0, 0.25);
+            border-radius: 25px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            font-size: 28px;
+            letter-spacing: 2px;
+            font-family: "Irish Grover", system-ui;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-box {
+            margin-bottom: 10px;
+        }
+
+        .input-box input {
+            width: 90%;
+            height: 45px;
+            font-size: 15px;
+            font-family: "Nunito", serif;
+            margin-top: 10px;
+            padding: 10px;
+            padding-left: 30px;
+            border: none;
+            border-radius: 60px;
+            outline: none;
+        }
+
+        .signup-btn {
+            width: 98%;
+            height: 62px;
+            font-size: 18px;
+            font-family: "Nunito", serif;
+            background-color: #ffcc00;
+            color: black;
+            font-weight: bolder;
+            padding: 10px;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+        }
+
+        .separator {
+            text-align: center;
+            font-size: 20px;
+            font-family: "Nunito", serif;
+            font-weight: 600;
+            color: black;
+            margin: 15px 0;
+        }
+
+        .social-login {
+            margin-top: -3px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            gap: 2px; 
+        }
+
+        .social-login button {
+            width: 75%;
+            height: 45px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            font-family: "Nunito", serif;
+            border: 1px solid #ccc;
+            background: #fff;
+            border-radius: 60px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .social-login button :hover {
+            color: #ccc;
+        }
+
+        .social-login button img {
+            position: absolute;
+            left: 13px; 
+            width: 29px; 
+            height: auto;
+        }
+
+        .already-user {
+            font-family: "Nunito", serif;
+        }
+
+        .login-link {
+            text-decoration: none;
+            color: #4379F2;
+            font-weight: bold;
+        }
+
+        .google-link {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-form">
+            <h2>Create your Account</h2>
+            <form id="signUpForm">
+                <div class="input-box">
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="input-box">
+                    <input type="email" id="email" placeholder="Enter your Email" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="school" placeholder="School (optional)">
+                </div>
+                <div class="input-box">
+                    <input type="password" id="password" placeholder="Enter a Password" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="confirm_password" placeholder="Confirm your Password" required>
+                </div>
+                <button type="submit" class="signup-btn">Sign up</button>
+                <p class="separator">or</p>
+            </form>
+            <div class="social-login">
+                <button>
+                    <img src="logo google.png" class="google-logo" alt="">
+                    <a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?client_id=532352704633-6pkces9iboppp465idnovkcqtlsa8j7t.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.figma.com%2Ffinish_google_sso&response_type=code&scope=profile email&access_type=online&prompt=select_account&state=3Md4yEZvbae%2BOLk2Y52EIfgEiX8nM1FhLO6qLJjrXrC1&service=lso&o2v=2&ddm=1&flowName=GeneralOAuthFlow" class="google-link">Continue with Google</a>  
+                </button>
+                <button>
+                    <img src="logo microsoft.png" class="microsoft-logo" alt=""> 
+                    <span>Continue with Microsoft</span>
+                </button>
+            <p class="already-user">Already a LearnQuester? <a href="login.html" class="login-link">Log in here</a></p>
+        </div>
+    </div>
+
+    <script>
+        const signUpForm = document.getElementById('signUpForm');
+        signUpForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const school = document.getElementById('school').value;
+            const password = document.getElementById('password').value;
+            const confirm_password = document.getElementById('confirm_password').value;
+
+            if (password !== confirm_password) {
+                alert('Password kamu salah!');
+                return;
+            }
+
+            const user = {
+                name,
+                email,
+                school,
+                password
+            };
+
+            localStorage.setItem('user', JSON.stringify(user));
+            alert('Account created successfully! Please log in.');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

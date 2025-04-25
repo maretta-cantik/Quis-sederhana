@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Maiden+Orange&family=Nosifer&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Righteous&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>FAQs page</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fcf3ad;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            height: 55px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 10000;
+            place-items: center;
+            box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.7); /* Garis tipis tapi tetap kelihatan */
+        }
+  
+        .account .icon {
+            width: 25px; 
+            height: 30px;
+            object-fit: contain; /* pastiin ikon nya ngga terdistorsi */
+        }
+
+        .account {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 55px; 
+        }
+
+        .account a {
+            font-family: "Nunito", serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: rgba(143, 143, 143, 1);
+            text-decoration: none;
+        }
+
+        .account :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+        
+        .account-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #D1F8EF;
+            border-radius: 12px;
+            padding: 15px;
+            min-width: 200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 999;
+            font-family: "Nunito", serif;
+        }
+
+        .account-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: black;
+            text-align: left;
+        }
+
+        .dropdown-content button {
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 50px;
+            padding: 6px 12px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .menu {
+            margin: 0;
+            display: flex;
+            gap: 5px;
+            list-style: none;
+            padding: 0;	
+            margin-left: auto;	
+            align-items: center;
+            
+        }
+
+        .menu li {
+            padding-left: 0;
+            margin-right: 20px;
+        }
+
+        .menu li a {
+            padding:5px;
+            text-decoration: none;
+            display: inline-block;
+            font-family: "Nunito", serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: rgba(143, 143, 143, 1);;
+        }
+
+        .menu-home :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .menu-about :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .menu-faqs :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+
+        h1 {
+            color: #5D4037;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-family: "Irish Grover", system-ui;
+            font-size: 35px;
+        }
+
+        p {
+            color: #5D4037;
+            font-size: 0.9rem;
+            font-family: "Nunito", serif;
+            font-size: 16px;
+        }
+
+        .faq-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+        }
+
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            color: rgba(143, 143, 143, 1);
+            font-family: "Nunito", serif;
+            font-size: 16px;
+        }
+
+        .faq-question:hover {
+            color: rgba(250, 196, 26, 1);
+            font-family: "Nunito", serif;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 5px;
+            color: rgba(143, 143, 143, 1);
+            font-family: "Nunito", serif;
+            font-size: 15px;
+            text-align: left;
+        }
+
+    </style>
+     <nav class="navbar">
+        <ul class="menu">
+           <li class="menu-home"><a href="index.html">Home</a></li>
+           <li class="menu-about"><a href="about.html">About Us</a></li>
+           <li class="menu-faqs"><a href="faqs.html">Faqs</a></li>
+       </ul>
+       <div class="account-dropdown">
+        <div class="account">
+          <img src="logo-account.png" alt="User Icon" class="icon">
+          <a href="#">My Account</a>
+        </div>
+        <div class="dropdown-content" id="dropdownContent">
+          <p><strong>Name:</strong> <span id="navName"></span></p>
+          <p><strong>Email:</strong> <span id="navEmail"></span></p>
+          <p><strong>School:</strong> <span id="navSchool"></span></p>
+          <button onclick="logout()">Logout</button>
+        </div>
+      </div>      
+    </nav>
+    <h1>FAQs</h1>
+    <p>Punya pertanyaan seputar LearnQuest Education Project? Berikut adalah beberapa pertanyaan yang sering diajukan. Jika Anda tidak menemukan jawaban yang Anda cari, jangan ragu untuk menghubungi kami. <a href="#">contact us</a>.</p>
+    <div class="faq-item">
+        <button class="faq-question">Apa itu LearnQuest Education Project?</button>
+        <div class="faq-answer">LearnQuest Education Project adalah platform kuis edukasi yang dirancang untuk membantu pengguna memperluas pengetahuan mereka melalui kuis interaktif dan menantang.</div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Bagaimana cara mengikuti kuis di LearnQuest?</button>
+        <div class="faq-answer">Cukup daftar akun, pilih kategori kuis yang kamu minati, lalu mulai menjawab pertanyaan sesuai dengan level kemampuanmu.</div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Apakah LearnQuest gratis digunakan?</button>
+        <div class="faq-answer">Ya, sebagian besar kuis di LearnQuest dapat diakses secara gratis. Namun, ada beberapa fitur premium yang bisa dibeli untuk pengalaman belajar yang lebih lengkap.</div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Apa saja topik yang tersedia di LearnQuest?</button>
+        <div class="faq-answer">LearnQuest menawarkan beragam topik seperti Matematika, Sains, Sejarah, Bahasa Inggris, dan masih banyak lagi.</div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Bagaimana jika saya mengalami masalah saat menggunakan website?</button>
+        <div class="faq-answer">Kamu bisa menghubungi tim dukungan kami melalui email di <a href="#">support@learnquest</a> atau melalui fitur live chat di website.</div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">Apakah ada fitur khusus untuk guru atau pendidik?</button>
+        <div class="faq-answer">Ya, kami menyediakan fitur khusus untuk guru yang memungkinkan mereka membuat kuis kustom dan memantau kemajuan siswa.</div>
+    </div>
+
+<script>
+    document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+        } else {
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                item.style.display = 'none';
+            });
+            answer.style.display = 'block';
+        }
+    });
+});
+</script>
+<script>
+     document.addEventListener("DOMContentLoaded", function () {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const accountBtn = document.getElementById('accountBtn');
+      const dropdown = document.getElementById('dropdownContent');
+  
+      if (user) {
+        // Isi data ke dropdown
+        document.getElementById('navName').textContent = user.name;
+        document.getElementById('navEmail').textContent = user.email;
+        document.getElementById('navSchool').textContent = user.school || 'Not Provided';
+      }
+  
+      window.logout = function () {
+        localStorage.removeItem('user');
+        window.location.href = 'login.html';
+      };
+    });
+    
+      accountBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (!user) {
+          alert('Silakan sign up terlebih dahulu untuk mengakses My Account.');
+        } else {
+          // Toggle dropdown
+          dropdown.classList.toggle('show'); 
+        }
+      });
+</script>
+</body>
+</html>

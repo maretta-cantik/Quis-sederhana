@@ -1,0 +1,245 @@
+<html>
+  <head>
+    <title>About Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Maiden+Orange&family=Nosifer&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Righteous&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background-image: url('background-home.png');
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        height: 55px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 1);
+        z-index: 10000;
+        box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.7); /* Garis tipis tapi tetap kelihatan */
+      }
+
+      .account .icon {
+        width: 25px;
+        height: 30px;
+        object-fit: contain; /* pastiin ikon nya ngga terdistorsi */
+      }
+
+      .account {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-right: 55px;
+      }
+
+      .account a {
+        font-family: "Nunito", serif;
+        font-size: 16px;
+        font-weight: bold;
+        color: rgba(143, 143, 143, 1);
+        text-decoration: none;
+      }
+
+      .account:hover a {
+        color: rgba(250, 196, 26, 1);
+      }
+
+      .account-dropdown {
+            position: relative;
+            display: inline-block;
+      }
+
+      .dropdown-content {
+          display: none;
+          position: absolute;
+          right: 0;
+          background-color: #D1F8EF;
+          border-radius: 12px;
+          padding: 15px;
+          min-width: 200px;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+          z-index: 999;
+          font-family: "Nunito", serif;
+      }
+
+      .account-dropdown:hover .dropdown-content {
+          display: block;
+      }
+
+      .dropdown-content p {
+          margin: 5px 0;
+          font-size: 14px;
+          color: black;
+      }
+
+      .dropdown-content button {
+          background-color: #ffcc00;
+          border: none;
+          border-radius: 50px;
+          padding: 6px 12px;
+          margin-top: 10px;
+          cursor: pointer;
+          font-weight: bold;
+      }
+
+      .menu {
+        margin: 0;
+        display: flex;
+        gap: 5px;
+        list-style: none;
+        padding: 0;
+        margin-left: auto;
+        align-items: center;
+      }
+
+      .menu li {
+        padding-left: 0;
+        margin-right: 20px;
+      }
+
+      .menu li a {
+        padding: 5px;
+        text-decoration: none;
+        display: inline-block;
+        font-family: "Nunito", serif;
+        font-size: 16px;
+        font-weight: bold;
+        color: rgba(143, 143, 143, 1);
+      }
+
+      .menu li a:hover {
+        color: rgba(250, 196, 26, 1);
+      }
+
+      .courses {
+        text-align: center;
+        width: 80%;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        font-family: "Irish Grover", system-ui;
+        font-size: 35px;
+        color: #5D4037;
+      }
+
+      p {
+        color: #5D4037;
+        margin-bottom: 40px;
+        font-family: "Nunito", serif;
+        font-size: 16px;
+      }
+
+      .course-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .course-card {
+          background-color: #fff8e1; /* Warna latar seperti di gambar */
+          border-radius: 12px;
+          padding: 20px;
+          width: 30%;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+          transition: transform 0.3s ease; /* Efek saat hover */
+      }
+
+      .course-card:hover {
+          transform: translateY(-5px); /* Efek naik sedikit saat dihover */
+      }
+
+      .course-card h3 {
+          color: #4E4E4E;
+          margin-bottom: 10px;
+      }
+
+      .course-card p {
+          font-size: 0.9rem;
+          line-height: 1.5;
+          color: #4E4E4E;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="menu">
+        <li class="menu-home"><a href="index.html">Home</a></li>
+        <li class="menu-about"><a href="about.html">About Us</a></li>
+        <li class="menu-faqs"><a href="faqs.html">Faqs</a></li>
+      </ul>
+      <div class="account-dropdown">
+        <div class="account">
+          <img src="logo-account.png" alt="User Icon" class="icon">
+          <a href="#">My Account</a>
+        </div>
+        <div class="dropdown-content">
+          <p><strong>Name:</strong> <span id="navName"></span></p>
+          <p><strong>Email:</strong> <span id="navEmail"></span></p>
+          <p><strong>School:</strong> <span id="navSchool"></span></p>
+          <button onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </nav>
+    <section class="courses">
+      <h2>About Us</h2>
+      <p>LearnQuest Education Project adalah platform pembelajaran interaktif yang menggabungkan kuis berbasis permainan untuk membuat proses belajar menjadi lebih menarik dan efektif. Kami menyediakan berbagai kuis interaktif yang dirancang untuk membantu siswa memahami materi pelajaran dengan cara yang menyenangkan</p>
+
+      <div class="course-container">
+          <div class="course-card">
+              <h3>Misi kami</h3>
+              <p>Misi kami adalah meningkatkan minat belajar siswa melalui metode pembelajaran yang inovatif dan interaktif. Kami berkomitmen untuk menyediakan alat pembelajaran yang dapat diakses oleh semua orang, membantu mereka mencapai potensi penuh dalam pendidikan</p>
+          </div>
+
+          <div class="course-card">
+              <h3>Sejarah kami</h3>
+              <p>LearnQuest Education Project didirikan pada tahun 2023 oleh sekelompok pendidik dan pengembang teknologi yang peduli terhadap kualitas pendidikan. Kami melihat kebutuhan akan platform yang dapat menjembatani kesenjangan antara teknologi dan pendidikan, sehingga lahirlah LearnQuest. Sejak diluncurkan, kami telah berkembang dan terus berinovasi untuk memenuhi kebutuhan belajar siswa di era digital.</p>
+          </div>
+
+          <div class="course-card">
+              <h3>Pengguna kami</h3>
+              <p>Saat ini, LearnQuest Education Project digunakan oleh ribuan siswa dan pendidik di seluruh dunia. Pengguna kami mencakup berbagai tingkat pendidikan, dari sekolah dasar hingga perguruan tinggi, yang memanfaatkan platform kami untuk meningkatkan pengalaman belajar dan mengajar mereka.</p>
+          </div>
+      </div>
+  </section>
+  </body>
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const accountBtn = document.getElementById('accountBtn');
+      const dropdown = document.getElementById('dropdownContent');
+  
+      if (user) {
+        // Isi data ke dropdown
+        document.getElementById('navName').textContent = user.name;
+        document.getElementById('navEmail').textContent = user.email;
+        document.getElementById('navSchool').textContent = user.school || 'Not Provided';
+      }
+  
+      window.logout = function () {
+        localStorage.removeItem('user');
+        window.location.href = 'login.html';
+      };
+    });
+    
+      accountBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (!user) {
+          alert('Silakan sign up terlebih dahulu untuk mengakses My Account.');
+        } else {
+          // Toggle dropdown
+          dropdown.classList.toggle('show'); 
+        }
+      });
+  </script>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+ <html lang="id">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Maiden+Orange&family=Nosifer&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Righteous&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+     <title>Login</title>
+     <style>
+         body {
+             background-size: cover;
+             background-position: center;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             height: 100vh;
+             width: 100%;
+             background-image: url('background sign-up.png');
+             min-height: 800px;
+         }
+ 
+         .container {
+             width: 572%;
+             height: 700px;
+             max-width: 1200px;
+             display: flex;
+             justify-content: flex-end;
+             padding: 20px;
+         }
+ 
+         .login-form {
+             width: 450px;
+             height: 650px;
+             padding: 20px;
+             background: #D1F8EF;
+             box-shadow: 1px rgba(0, 0, 0, 0.25);
+             border-radius: 25px;
+         }
+ 
+         h2 {
+             text-align: center;
+             margin-bottom: 20px;
+             font-size: 30px;
+             font-family: "Irish Grover", system-ui;
+         }
+ 
+         form {
+             display: flex;
+             flex-direction: column;
+         }
+ 
+         .input-box {
+             margin-bottom: 10px;
+         }
+ 
+         .input-box input {
+             width: 90%;
+             height: 45px;
+             font-size: 15px;
+             font-family: "Nunito", serif;
+             margin-top: 20px;
+             padding: 10px;
+             padding-left: 30px;
+             border: none;
+             border-radius: 60px;
+             outline: none;
+         }
+ 
+         .login-btn {
+             width: 98%;
+             height: 62px;
+             font-size: 18px;
+             font-family: "Nunito", serif;
+             background-color: #ffcc00;
+             color: black;
+             font-weight: bolder;
+             padding: 10px;
+             margin-top: 20px;
+             margin-bottom: 15px;
+             border: none;
+             border-radius: 60px;
+             cursor: pointer;
+         }
+ 
+         .forgot-password {
+             font-family: "Nunito", serif;
+             margin-left: 15px;
+         }
+ 
+         .forgot-password a {
+             color: #3D3BF3;
+         }
+ 
+         .sign-up {
+             font-family: "Nunito", serif;
+         }
+ 
+         .sign-up-link {
+             text-decoration: none;
+             color: #4379F2;
+             font-weight: bold;
+         }
+ 
+         .social-login {
+             margin-top: -3px;
+             display: flex;
+             flex-direction: column;
+             align-items: center; 
+             gap: 2px; 
+         }
+ 
+         .social-login button {
+             width: 75%;
+             height: 45px;
+             padding: 8px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             position: relative;
+             text-align: center;
+             font-family: "Nunito", serif;
+             border: 1px solid #ccc;
+             background: #fff;
+             border-radius: 60px;
+             cursor: pointer;
+             margin-top: 10px;
+         }
+ 
+         .social-login button img {
+             position: absolute;
+             left: 13px; 
+             width: 29px; 
+             height: auto;
+         }
+ 
+         .social-login button span {
+             text-align: center;
+             width: 100%;
+         }
+     
+         .button:hover {
+             background-color: #0c0c0c;
+         }
+ 
+         .separator {
+             font-family: "Nunito", serif;
+             font-size: 18px;
+         }
+ 
+          /* Responsif */
+          @media (max-width: 768px) {
+             body {
+                 background-size: cover;
+                 background-position: center;
+                 padding: 20px;
+             }
+ 
+             .container {
+                 flex-direction: column;
+                 justify-content: flex-start;
+                 align-items: center;
+             }
+ 
+             .login-form {
+                 width: 100%;
+                 max-width: 400px;
+                 margin-top: 20px;
+             }
+ 
+             h2 {
+                 font-size: 24px;
+             }
+ 
+             .login-btn {
+                 font-size: 16px;
+                 height: 50px;
+             }
+ 
+             .input-box input {
+                 font-size: 14px;
+             }
+ 
+             .social-login button {
+                 width: 90%;
+                 height: 45px;
+             }
+ 
+             .forgot-password, .sign-up {
+                 font-size: 14px;
+             }
+ 
+             .forgot-password a, .sign-up-link {
+                 font-size: 14px;
+             }
+         }
+ 
+         @media (max-width: 480px) {
+             .login-form {
+                 max-width: 350px;
+                 height: auto;
+             }
+ 
+             .login-btn {
+                 font-size: 16px;
+                 height: 50px;
+             }
+ 
+             h2 {
+                 font-size: 22px;
+             }
+ 
+             .input-box input {
+                 font-size: 14px;
+             }
+ 
+             .social-login button {
+                 width: 80%;
+                 height: 45px;
+             }
+ 
+             .forgot-password, .sign-up {
+                 font-size: 12px;
+             }
+         }
+     </style>
+ </head>
+ <body>
+     <div class="container">
+         <div class="login-form">
+             <h2>Login</h2>
+             <form id="loginForm">
+                 <div class="input-box">
+                     <input type="email" id="email" placeholder="Enter your email" required>
+                 </div>
+                 <div class="input-box">
+                     <input type="password" id="password" placeholder="Enter your password" required>
+                 </div>
+                 <button type="submit" class="login-btn">Log In</button></a>
+
+                 <p class="forgot-password">Forgot password? <a href="riset.html">Reset your password</a></p>
+                 <center><p class="separator">or</p></center>
+             </form>
+             <div class="social-login">
+                 <button>
+                     <img src="logo google.png" class="google-logo" alt="">
+                     <span>Continue with Google</span>
+                 </button>
+                 <button>
+                     <img src="logo microsoft.png" class="microsoft-logo" alt=""> 
+                     <span>Continue with Microsoft</span>
+                 </button>
+ 
+             <p class="sign-up">New to LearnQuest? <a href="sign-up.html" class="sign-up-link">Sign up here</a></p>
+         </div>
+     </div>
+ 
+     <script>
+      document.getElementById("loginForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        // Simpan ke localStorage
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userPassword", password);
+
+        window.location.href = "dashbord.html";
+    });
+
+     </script>    
+     
+ </body>
+ </html>

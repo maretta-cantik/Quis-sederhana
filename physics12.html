@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics-12</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Maiden+Orange&family=Nosifer&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Righteous&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('background-home.png'); 
+            background-size: cover;
+            background-attachment: fixed; 
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            min-height: 800PX;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            height: 55px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            z-index: 10000;
+            place-items: center;
+            box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.7); /* buat garis tipis tp tetap kelihatan */
+        }
+  
+        .account .icon {
+            width: 25px; 
+            height: 30px;
+            object-fit: contain; 
+        }
+
+        .account {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 55px; 
+        }
+
+        .account a {
+            font-family: "Nunito", serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: rgba(143, 143, 143, 1);
+            text-decoration: none;
+        }
+
+        .account :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+        
+        .account-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #D1F8EF;
+            border-radius: 12px;
+            padding: 15px;
+            min-width: 200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 999;
+            font-family: "Nunito", serif;
+        }
+
+        .account-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .dropdown-content button {
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 50px;
+            padding: 6px 12px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .menu {
+            margin: 0;
+            display: flex;
+            gap: 5px;
+            list-style: none;
+            padding: 0;	
+            margin-left: auto;	
+            align-items: center;
+            
+        }
+
+        .menu li {
+            padding-left: 0;
+            margin-right: 20px;
+        }
+
+        .menu li a {
+            padding:5px;
+            text-decoration: none;
+            display: inline-block;
+            font-family: "Nunito", serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: rgba(143, 143, 143, 1);;
+        }
+
+        .menu-home :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .menu-about :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .menu-faqs :hover {
+            color: rgba(250, 196, 26, 1);
+        }
+
+        .question-container {
+            flex-direction: column;
+            background-color: rgba(207, 255, 247, 1);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            width: 700px;
+            height: 40vh;
+            max-width: 2000px;
+            margin: 0;
+            transform: scale(1.2); 
+            margin-top: 40PX;
+            font-weight: lighter;
+
+        }
+
+        h2 {
+            font-family: "Nunito", serif;
+            margin-bottom: 365px;
+            position: absolute;
+            color: rgba(0, 0, 0, 1);
+            font-weight: 500;
+            left: 230px;
+        }
+
+        .score-title {
+            left: 1030px; /* Supaya posisinya nggak terlalu jauh */
+            margin-bottom: 365px; /* Posisikan lebih dekat ke atas container */
+            position: absolute; /* Supaya bisa bebas atur posisi */
+            color: rgba(0, 0, 0, 1);
+            font-weight: 500;
+           
+        }
+
+        h3 {
+            font-family: "Nunito", serif;
+            font-size: 20px;
+            color: rgba(0, 0, 0, 1);
+            font-weight: 500;
+        }
+
+        .question-container hr {
+            width: 90%;
+            max-width: 600px;
+            margin-top: 30px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Tetap 2 kolom */
+            gap: 20px 5px; 
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+
+        .options button {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            width: 90%; /* Agar tombol memanjang penuh */
+            padding: 20px;
+            background-color: #fbc02d;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 1);
+            font-family: "Nunito", serif;
+            margin-left: 10px;
+        }
+
+        #optionA, #optionC {
+            margin-left: 30px !important;
+        }
+
+        .options button span {
+            flex: 1; /* Buat teks jawaban jadi rata tengah */
+            text-align: center; 
+            margin-left: -20px;
+            font-family: "Nunito", serif;
+        }
+
+    </style>
+    <nav class="navbar">
+        <ul class="menu">
+           <li class="menu-home"><a href="index.html">Home</a></li>
+           <li class="menu-about"><a href="about.html">About Us</a></li>
+           <li class="menu-faqs"><a href="faqs.html">Faqs</a></li>
+       </ul>
+       <div class="account-dropdown">
+        <div class="account">
+          <img src="logo-account.png" alt="User Icon" class="icon">
+          <a href="#">My Account</a>
+        </div>
+        <div class="dropdown-content">
+            <p><strong>Name:</strong> <span id="navName"></span></p>
+            <p><strong>Email:</strong> <span id="navEmail"></span></p>
+            <p><strong>School:</strong> <span id="navSchool"></span></p>
+            <button onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </nav>
+    <h2 id="question-number">Q 1/10</h2>
+<h2 class="score-title">Score: 0 </h2>
+
+<div class="question-container" id="question-container">
+    <div id="question-content">
+        <h3 id="question-text"></h3>
+        <hr size="1" noshade>
+        <div class="options" id="options-container">
+            <!-- pilihan akan di-generate di JS -->
+        </div>
+    </div>
+
+    <div id="feedback-container" style="display:none;">
+        <h3 id="feedback-text"></h3>
+        <img id="feedback-icon" class="" src="" alt="">
+        <div class="button-container">
+            <button class="correct-btn" id="correct-answer-text"></button>
+            <button class="next-btn" onclick="nextQuestion()">Next
+                <div class="arrow-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>   
+                </div>            
+            </button>
+        </div>
+    </div>
+</div>
+
+    <script>
+    let score = 0;
+    let currentQuestionIndex = 0;
+    const questions = [
+  {
+    question: "Inti atom terdiri dari...",
+    options: {
+      A: "Elektron dan neutron",
+      B: "Elektron dan proton",
+      C: "Proton dan neutron",
+      D: "Proton dan positron"
+    },
+    correctAnswer: 'C'
+  },
+  {
+    question: "Partikel bermuatan negatif dalam atom adalah...",
+    options: {
+      A: "Proton",
+      B: "Neutron",
+      C: "Elektron",
+      D: "Positron"
+    },
+    correctAnswer: 'C'
+  },
+  {
+    question: "Proses pelepasan inti ringan menjadi inti lebih berat disebut...",
+    options: {
+      A: "Fusi",
+      B: "Fisi",
+      C: "Ionisasi",
+      D: "Reduksi"
+    },
+    correctAnswer: 'A'
+  },
+  {
+    question: "Satuan radioaktivitas dalam SI adalah...",
+    options: {
+      A: "Gray",
+      B: "Becquerel",
+      C: "Sievert",
+      D: "Rutherford"
+    },
+    correctAnswer: 'B'
+  },
+  {
+    question: "Alat untuk mendeteksi radiasi adalah...",
+    options: {
+      A: "Ammeter",
+      B: "Oscilloscope",
+      C: "Geiger counter",
+      D: "Voltmeter"
+    },
+    correctAnswer: 'C'
+  },
+  {
+    question: "Efek fotolistrik dibuktikan oleh...",
+    options: {
+      A: "Newton",
+      B: "Einstein",
+      C: "Bohr",
+      D: "Faraday"
+    },
+    correctAnswer: 'B'
+  },
+  {
+    question: "Energi kinetik maksimum fotoelektron bergantung pada...",
+    options: {
+      A: "Warna cahaya",
+      B: "Intensitas cahaya",
+      C: "Frekuensi cahaya",
+      D: "Luas permukaan logam"
+    },
+    correctAnswer: 'C'
+  },
+  {
+    question: "Satuan energi foton adalah...",
+    options: {
+      A: "Joule",
+      B: "Watt",
+      C: "Ampere",
+      D: "Volt"
+    },
+    correctAnswer: 'A'
+  },
+  {
+    question: "Spektrum cahaya tampak terdiri dari...",
+    options: {
+      A: "5 warna",
+      B: "6 warna",
+      C: "7 warna",
+      D: "8 warna"
+    },
+    correctAnswer: 'C'
+  },
+  {
+    question: "Cahaya monokromatik artinya...",
+    options: {
+      A: "Banyak warna",
+      B: "Satu warna",
+      C: "Putih saja",
+      D: "Tak terlihat"
+    },
+    correctAnswer: 'B'
+  }
+];
+
+    function displayQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    const questionTextElement = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const questionNumberElement = document.getElementById('question-number');
+    const scoreElement = document.querySelector('.score-title');
+
+    // Update isi
+    questionTextElement.textContent = currentQuestion.question;
+    questionNumberElement.textContent = `Q ${currentQuestionIndex + 1}/10`;
+    scoreElement.textContent = `Score: ${score}`;
+
+    // Reset tampilan jawaban
+    optionsContainer.innerHTML = `
+        <button value="A" onclick="checkAnswer('A')">(A) <span>${currentQuestion.options.A}</span></button>
+        <button value="B" onclick="checkAnswer('B')">(B) <span>${currentQuestion.options.B}</span></button>
+        <button value="C" onclick="checkAnswer('C')">(C) <span>${currentQuestion.options.C}</span></button>
+        <button value="D" onclick="checkAnswer('D')">(D) <span>${currentQuestion.options.D}</span></button>
+    `;
+
+    // Tampilkan pertanyaan, sembunyikan feedback
+    document.getElementById('question-content').style.display = 'block';
+    document.getElementById('feedback-container').style.display = 'none';
+}
+
+function checkAnswer(selected) {
+    const currentQuestion = questions[currentQuestionIndex];
+    const scoreElement = document.querySelector('.score-title');
+
+    if (selected === currentQuestion.correctAnswer) {
+        score += 10;
+        scoreElement.textContent = `Score: ${score}`;
+
+        // Tampilkan feedback
+        document.getElementById('question-content').style.display = 'none';
+        document.getElementById('feedback-container').style.display = 'block';
+
+        document.getElementById('feedback-text').textContent = "Your answer is correct!!!";
+        document.getElementById('correct-answer-text').textContent = currentQuestion.options[selected];
+
+        const img = document.getElementById('feedback-icon');
+        img.src = 'centang.png';
+        img.alt = 'Wrong Answer';
+        img.classList.add('centang');
+
+        // const feedbackBtn = document.getElementById("feedback-btn");
+        // feedbackBtn.classList.add('correct-btn');
+        // feedbackBtn.textContent = selected;
+
+    } else {
+        alert("Opps! your answer is wrong. Click oke to go to the oke question")
+        nextQuestion(); 
+    }
+}
+    
+function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            displayQuestion();
+        } else {
+            alert("You've completed all questions!");
+
+            // Setelah alert diklik, arahkan ke halaman percobaan1.html
+            localStorage.setItem('score', score); // Menyimpan skor di localStorage
+            window.location.href = "hasil.html"; // Mengarahkan ke halaman percobaan1.html
+        }
+    }
+    
+    displayQuestion();
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const accountBtn = document.getElementById('accountBtn');
+      const dropdown = document.getElementById('dropdownContent');
+  
+      if (user) {
+        // Isi data ke dropdown
+        document.getElementById('navName').textContent = user.name;
+        document.getElementById('navEmail').textContent = user.email;
+        document.getElementById('navSchool').textContent = user.school || 'Not Provided';
+      }
+  
+      window.logout = function () {
+        localStorage.removeItem('user');
+        window.location.href = 'login.html';
+      };
+    });
+    
+      accountBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (!user) {
+          alert('Silakan sign up terlebih dahulu untuk mengakses My Account.');
+        } else {
+          // Toggle dropdown
+          dropdown.classList.toggle('show'); 
+        }
+      });
+</script>
+<style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('background-home.png'); 
+            background-size: cover;
+            background-attachment: fixed; 
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 800PX;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h3 {
+            font-family: "Nunito", serif;
+            font-size: 20px;
+            color: rgba(0, 0, 0, 1);
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .centang {
+            transform: scale(0.1);
+            transform-origin: center;
+            margin-top: -140px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Jarak antara tombol */
+            align-items: center; /* Pusatkan tombol */
+            top: -120px;
+        }
+
+        .correct-btn {
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            width: 250px;
+            height: 40px;
+            border: none;
+            border-radius:60px;
+            background-color: #4CAF50; /* Warna hijau untuk tombol "Correct" */
+            color: white;
+            cursor: pointer;
+            font-family: "Nunito" serif;
+            text-align: center;
+            font-size: 16px;
+            margin-top: -100px;
+        }
+
+        .correct-text {
+            color: white;
+            font-family: "Nunito", serif;
+            font-size: 18px;
+        }
+
+        .next-btn {
+            display: flex;
+            margin-top: 15px;
+            font-family: "Nunito", serif;
+            flex-direction: column; /* Panah di bawah teks */
+            justify-content: center; /* Pusatkan teks dan panah */
+            align-items: center;
+            text-align: center;
+            width: 70px;  /* Lebar */
+            height: 70px; /* Tinggi sama dengan lebar untuk bentuk bulat */
+            border-radius: 50%; /* Bikin bulat sempurna */
+            background-color: #FFA500; /* Warna oranye */
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 17px;
+            transform: scale(0.8); /* Kecilkan tombol tanpa ubah teks */
+            transform-origin: center; /* Pusatkan skalanya */
+            padding-top: 25px;
+        }
+
+        .next-btn .arrow-container {
+            padding-bottom: 15px; /* Atur panah tetap di tengah bawah */
+        }
+
+</style>
+</body>
+</html>
+
+ 
+
+
+
+
+
+
+
