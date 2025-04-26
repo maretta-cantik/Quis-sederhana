@@ -10,18 +10,12 @@
     <title>LearnQuest Education Project</title>
     <style>
         body {
-            margin: 0;
-            height: 100vh;
-            background-image: url('background-home.png'); 
-            background-size: cover;
-            background-attachment: fixed; 
-            background-position: center;
-            min-height: 900px;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
+           background-image: url('background-home.png');
+           background-size: cover;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           min-height: 900px;
         }
 
         h1 {
@@ -59,8 +53,8 @@
             justify-content: center;
             margin-top: 10px;
             padding: 10px 20px 8px;
-            height: 60px;
-            width: 480px;
+            height: 70px;
+            width: 450px;
             background-color: #ffcc00;
             color: black;
             border: none;
@@ -82,65 +76,19 @@
             top: -20px; 
         }
 
-    /* RESPONSIVE SETTINGS */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 3rem;
-      }
-
-      h2 {
-        font-size: 2.5rem;
-      }
-
-      .container {
-        padding: 40px 20px;
-      }
-
-      .button {
-        font-size: 1.2rem;
-        padding: 15px 20px;
-        width: 70%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-
-      h2 {
-        font-size: 2rem;
-      }
-
-      .button {
-        font-size: 1rem;
-        padding: 10px 15px;
-      }
-    }
-
-    @media (max-width: 300px) {
-        h1 {
-            font-size: 1.5rem;
-        }
-
-        h2 {
-            font-size: 1.4rem;
-        }
         
-        .button {
-            font-size: 1rem;
-        }
-    }
-  </style>
+    </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>WELCOME TO</h1>
-    <h2>LEARNQUEST!!</h2>
-    <a href="login.html">
-      <button class="button">Click to jump right in</button>
-    </a>
-  </div>
+    <div class="container">
+        <h1>WELCOME TO</h1>
+        <h2>LEARNQUEST!!</h2>
+        <a href="login.html" onclick="startAudio()">
+            <button class="button">Click to jump right in</button>
+        </a>
+    </div>
 </body>
 </html>
+
+
